@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+</head>
+<body>
+    <h1>Event Management</h1>
+
+    <h2>Upcoming Events</h2>
+    <ul>
+        {% for event in events %}
+            <li>
+                <strong>{{ event.name }}</strong><br>
+                {{ event.description }}<br>
+                Date: {{ event.date }}<br>
+                Location: {{ event.location }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add New Event</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
